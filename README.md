@@ -1,2 +1,2 @@
 # tests-4-exercism
-Исследование ресурса exercism.io
+Прохождение курса по PHP
