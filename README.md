@@ -1,2 +1,2 @@
-# tests-4-exercism
+# php-course
 Прохождение курса по PHP
