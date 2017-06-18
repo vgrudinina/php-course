@@ -40,21 +40,19 @@ fwrite(STDOUT, "(Enter the count of students:)" . PHP_EOL);
 fscanf($handle,'%d', $n);
 
 $student = [];
-$students = [$student];
+$students = [];
 
 for ($i = 0; $i < $n; ++$i) {
     list($name, $group, $avg) = explode(' ', fgets($handle));
     $group = intval($group);
     $avg = floatval($avg);
     $student[$i] = [$name, $group, $avg];
-    $students[$i] = [$student[$i]];
-    
+    $students[$i] = [$student[$i]];  
 }
 
-foreach ($students as $student) {
-    printf("| %' 10 | %' 2 | %' 4.2f |\n", $student);
+foreach ($student as $value) {
+    list($name, $group, $avg) = $value;
+    printf(" %-' 10s |  %-' 1d  | %' 1.2f \n", $name, $group, $avg);
 }
 
 fclose($handle);
-
-// todo напишите ваш код здесь
