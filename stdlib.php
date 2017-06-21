@@ -82,7 +82,6 @@ function getPositiveFloat() {
     do {
         fwrite(STDOUT, "(enter positive float number)" . PHP_EOL);
         fscanf($handle, "%f", $n);
-        var_dump($n);
     } while (!is_float($n) && $n <= 0);
 
     fclose($handle);
