@@ -39,6 +39,8 @@ $handle = fopen('php://stdin', 'r');
 fwrite(STDOUT, "(Enter the count of students:)" . PHP_EOL);
 fscanf($handle,'%d', $n);
 
+/*----------------Мое решение----------------------*/
+/*
 $student = [];
 $students = [];
 
@@ -53,6 +55,30 @@ for ($i = 0; $i < $n; ++$i) {
 foreach ($student as $value) {
     list($name, $group, $avg) = $value;
     printf(" %-' 10s |  %-' 1d  | %' 1.2f \n", $name, $group, $avg);
+}
+
+fclose($handle);
+*/
+
+/*---------------------Более правильное решение-------------------------*/
+$handle = fopen('php://stdin', 'r');
+fwrite(STDOUT, "(Enter the count of students:)" . PHP_EOL);
+fscanf($handle,'%d', $n);
+
+$students = [];
+
+for ($i = 0; $i < $n; ++$i) {
+    list($name, $group, $avg) = explode(' ', fgets($handle));
+    
+    $students[$i] = [
+    'name' => $name,
+    'group' => (int)$group,
+    'avg' => (float)$avg
+    ];  
+}
+
+foreach ($students as $student) {
+    printf(" %-' 10s |  %-' 1d  | %' 1.2f \n", $student['name'], $student['group'], $student['avg']);
 }
 
 fclose($handle);

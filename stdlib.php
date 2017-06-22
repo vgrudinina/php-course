@@ -67,7 +67,7 @@ function getPositiveInt() {
     do {
         fwrite(STDOUT, "(enter positive integer number)" . PHP_EOL);
         fscanf($handle, "%d", $n);
-    } while (!is_int($n) && $n <= 0);
+    } while (!is_int($n) || $n <= 0);
 
     fclose($handle);
     return intval($n);
@@ -82,7 +82,7 @@ function getPositiveFloat() {
     do {
         fwrite(STDOUT, "(enter positive float number)" . PHP_EOL);
         fscanf($handle, "%f", $n);
-    } while (!is_float($n) && $n <= 0);
+    } while (!is_float($n) || $n <= 0.0);
 
     fclose($handle);
     return floatval($n);
