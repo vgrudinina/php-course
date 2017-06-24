@@ -100,7 +100,7 @@ function M($number) {
 }
 function D($number) {
     if ($number == 4) {
-        return 'CD';
+        return 'CM';
     }
     elseif ($number == 0) {
         return;
@@ -112,7 +112,7 @@ function D($number) {
 
 function C($number) {
     if ($number == 4) {
-        return 'CM';
+        return 'CD';
     }
     elseif (($number != 0) && $number < 4) {
          $i = 0;
