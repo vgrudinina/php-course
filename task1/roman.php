@@ -47,18 +47,19 @@
  * @return string
  */
 function toRoman($number) {
+    
     //вычисляем тысячи
     $m1 = (int)($number / 1000);
     echo M($m1);
     //остаток от тысяч
     $m2 = (int)($number % 1000);
+    
     //вычисляем полусотни
     $d1 = (int)($m2 / 500);
-    if ($d1 > 0) {
     echo D($d1);
-    }
     //вычисляем остаток от полусотни
     $d2 = (int)($m2 % 500);
+    
     //вычисляем сотни
     $c1 = (int)($d2 / 100);
     echo C($c1);
@@ -67,9 +68,7 @@ function toRoman($number) {
     
     //вычисляем полусотни
     $l1 = (int)($c2 / 50);
-    if ($l1 > 0) {
     echo L($l1);
-    }
     //вычисляем остаток от полусотни
     $l2 = (int)($c2 % 50);
     
@@ -81,9 +80,7 @@ function toRoman($number) {
     
     //вычисляем пятерки
     $v1 = (int)($x2 / 5);
-    if ($v1 > 0) {
     echo V($v1);
-    }
     //вычисляем остаток от пятерки
     $v2 = (int)($x2 % 5);
     
@@ -103,7 +100,10 @@ function M($number) {
 }
 function D($number) {
     if ($number == 4) {
-        return 'CM';
+        return 'CD';
+    }
+    elseif ($number == 0) {
+        return;
     }
     else {
         return 'D';
@@ -112,7 +112,7 @@ function D($number) {
 
 function C($number) {
     if ($number == 4) {
-        return 'CD';
+        return 'CM';
     }
     elseif (($number != 0) && $number < 4) {
          $i = 0;
@@ -128,6 +128,9 @@ function C($number) {
 function L($number) {
     if ($number == 4) {
         return 'XC';
+    }
+    elseif ($number == 0) {
+        return;
     }
     else {
         return 'L';
@@ -151,6 +154,9 @@ function X($number) {
 function V($number) {
     if ($number == 4) {
         return 'IX';
+    }
+    elseif ($number == 0) {
+        return;
     }
     else {
         return 'V';
