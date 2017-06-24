@@ -48,46 +48,50 @@
  */
 function toRoman($number) {
     //вычисляем тысячи
-    $m1 = $number / 1000;
-    M($m1);
+    $m1 = (int)($number / 1000);
+    echo M($m1);
     //остаток от тысяч
-    $m2 = $number % 1000;
-        
+    $m2 = (int)($number % 1000);
     //вычисляем полусотни
-    $d1 = $m2 / 500;
-    D($d1);
+    $d1 = (int)($m2 / 500);
+    if ($d1 > 0) {
+    echo D($d1);
+    }
     //вычисляем остаток от полусотни
-    $d2 = $m2 % 500;
-    
+    $d2 = (int)($m2 % 500);
     //вычисляем сотни
-    $c1 = $d2 / 100;
-    C($c1);
+    $c1 = (int)($d2 / 100);
+    echo C($c1);
     //вычисляем остаток от сотни
-    $c2 = $d2 % 100;
+    $c2 = (int)($d2 % 100);
     
     //вычисляем полусотни
-    $l1 = $c2 / 50;
-    L($l1);
+    $l1 = (int)($c2 / 50);
+    if ($l1 > 0) {
+    echo L($l1);
+    }
     //вычисляем остаток от полусотни
-    $l2 = $c2 % 50;
+    $l2 = (int)($c2 % 50);
     
     //вычисляем десятки
-    $x1 = $l2 / 10;
-    X($x1);
+    $x1 = (int)($l2 / 10);
+    echo X($x1);
     //вычисляем остаток от десятка
-    $x2 = $l2 % 10;
+    $x2 = (int)($l2 % 10);
     
     //вычисляем пятерки
-    $v1 = $x2 / 5;
-    V($v1);
+    $v1 = (int)($x2 / 5);
+    if ($v1 > 0) {
+    echo V($v1);
+    }
     //вычисляем остаток от пятерки
-    $v2 = $x2 % 5;
+    $v2 = (int)($x2 % 5);
     
     //вычисляем единицы
-    $j1 = $v2 / 1;
-    J($j1);
+    $j1 = (int)($v2 / 1);
+    echo J($j1);
     //вычисляем остаток от единиц
-    $j2 = $v2 % 1;
+    $j2 = (int)($v2 % 1);
 }
 function M($number) {
     $i = 0;
@@ -99,19 +103,16 @@ function M($number) {
 }
 function D($number) {
     if ($number == 4) {
-        echo 'CM';
-        return;
+        return 'CM';
     }
     else {
-        echo 'D';
-        return;
+        return 'D';
     }
 }
 
 function C($number) {
     if ($number == 4) {
-        echo 'CD';
-        return;
+        return 'CD';
     }
     elseif (($number != 0) && $number < 4) {
          $i = 0;
@@ -126,18 +127,15 @@ function C($number) {
 
 function L($number) {
     if ($number == 4) {
-        echo 'XC';
-        return;
+        return 'XC';
     }
     else {
-        echo 'L';
-        return;
+        return 'L';
     }
 }
 function X($number) {
     if ($number == 4) {
-        echo 'XL';
-        return;
+        return 'XL';
     }
     elseif (($number != 0) && $number < 4) {
          $i = 0;
@@ -152,19 +150,16 @@ function X($number) {
 
 function V($number) {
     if ($number == 4) {
-        echo 'IX';
-        return;
+        return 'IX';
     }
     else {
-        echo 'V';
-        return;
+        return 'V';
     }
 }
 
 function J($number) {
     if ($number == 4) {
-        echo 'IV';
-        return;
+        return 'IV';
     }
     elseif (($number != 0) && $number < 4) {
          $i = 0;
@@ -184,4 +179,4 @@ do {
     fscanf($handle, '%d', $n);
 } while (!is_int($n) || $n <= 0);
 
-echo toRoman($n);
+toRoman($n);
