@@ -56,37 +56,37 @@ function toRoman($number) {
     
     //вычисляем полусотни
     $d1 = (int)($m2 / 500);
-    echo D($d1);
+    echo D($d1, $m2);
     //вычисляем остаток от полусотни
     $d2 = (int)($m2 % 500);
     
     //вычисляем сотни
     $c1 = (int)($d2 / 100);
-    echo C($c1);
+    echo C($c1, $m2);
     //вычисляем остаток от сотни
     $c2 = (int)($d2 % 100);
     
     //вычисляем полусотни
     $l1 = (int)($c2 / 50);
-    echo L($l1);
+    echo L($l1, $c2);
     //вычисляем остаток от полусотни
     $l2 = (int)($c2 % 50);
-    
+  
     //вычисляем десятки
     $x1 = (int)($l2 / 10);
-    echo X($x1);
+    echo X($x1, $c2);
     //вычисляем остаток от десятка
     $x2 = (int)($l2 % 10);
     
     //вычисляем пятерки
     $v1 = (int)($x2 / 5);
-    echo V($v1);
+    echo V($v1, $x2);
     //вычисляем остаток от пятерки
     $v2 = (int)($x2 % 5);
     
     //вычисляем единицы
     $j1 = (int)($v2 / 1);
-    echo J($j1);
+    echo J($j1, $x2);
     //вычисляем остаток от единиц
     $j2 = (int)($v2 % 1);
 }
@@ -98,8 +98,8 @@ function M($number) {
     }
     return;
 }
-function D($number) {
-    if ($number == 4) {
+function D($number, $m2) {
+    if ($number == 1 && $m2 % 500 >= 400) {
         return 'CM';
     }
     elseif ($number == 0) {
@@ -110,8 +110,8 @@ function D($number) {
     }
 }
 
-function C($number) {
-    if ($number == 4) {
+function C($number, $m2) {
+    if ($number == 4 && $m2 / 500 < 1) {
         return 'CD';
     }
     elseif (($number != 0) && $number < 4) {
@@ -125,8 +125,8 @@ function C($number) {
     else return;
 }
 
-function L($number) {
-    if ($number == 4) {
+function L($number, $c2) {
+    if ($number == 1 && $c2 % 50 >= 40) {
         return 'XC';
     }
     elseif ($number == 0) {
@@ -136,8 +136,8 @@ function L($number) {
         return 'L';
     }
 }
-function X($number) {
-    if ($number == 4) {
+function X($number, $c2) {
+    if ($number == 4 && $c2 / 50 < 1) {
         return 'XL';
     }
     elseif (($number != 0) && $number < 4) {
@@ -151,8 +151,8 @@ function X($number) {
     else return;
 }
 
-function V($number) {
-    if ($number == 4) {
+function V($number, $x2) {
+    if ($number == 1 && $x2 % 5 >= 4) {
         return 'IX';
     }
     elseif ($number == 0) {
@@ -163,8 +163,8 @@ function V($number) {
     }
 }
 
-function J($number) {
-    if ($number == 4) {
+function J($number, $x2) {
+    if ($number == 4 && $x2 / 5 < 1) {
         return 'IV';
     }
     elseif (($number != 0) && $number < 4) {
